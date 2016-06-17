@@ -75,15 +75,17 @@ void SU_AppMain( void )
 /*                                                                            */
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * **/
 void SU_AppInit(void)
-{
+{  
+    int32 result;
     /*
     ** Register the app with Executive services
     */
-    CFE_ES_RegisterApp() ;
+    result = CFE_ES_RegisterApp();
 
     /*
     ** Register the events
     */ 
+    
     CFE_EVS_Register(SU_EventFilters,
                      sizeof(SU_EventFilters)/sizeof(CFE_EVS_BinFilter_t),
                      CFE_EVS_BINARY_FILTER);
