@@ -44,7 +44,13 @@ void SU_AppMain( void )
 
     CFE_ES_PerfLogEntry(SU_APP_PERF_ID);
 
-    SU_AppInit();
+    status = SU_AppInit();
+
+    if(status != CFE_SUCCESS)
+    {
+         /* Set request to terminate main loop */
+        RunStatus = CFE_ES_APP_ERROR;
+    }     
 
     /*
     ** SU Runloop
